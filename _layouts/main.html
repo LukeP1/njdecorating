@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% assign meta_title = page.seo_title | default: page.title | default: site.title %}
+  {% assign meta_description = page.description | default: site.description %}
+
+  <title>{{ meta_title }}</title>
+  {% if meta_description %}
+  <meta name="description" content="{{ meta_description }}" />
+  {% endif %}
+
+  {% assign canonical_url = page.url | absolute_url %}
+  <link rel="canonical" href="{{ canonical_url }}" />
+  <meta property="og:url" content="{{ canonical_url }}" />
+
+  <meta property="og:title" content="{{ meta_title }}" />
+  {% if meta_description %}<meta property="og:description" content="{{ meta_description }}" />{% endif %}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+
+  {% assign social_image = page.og_image | default: site.og_image %}
+  {% if social_image %}
+  <meta property="og:image" content="{{ social_image | absolute_url }}" />
+  <meta name="twitter:image" content="{{ social_image | absolute_url }}" />
+  {% endif %}
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ meta_title }}" />
+  {% if meta_description %}<meta name="twitter:description" content="{{ meta_description }}" />{% endif %}
+
+  <link rel="icon" href="{{ '/images/favicon.svg' | relative_url }}" type="image/svg+xml" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "{{ '/#business' | absolute_url }}",
+    "name": "N J Broxholme Painting & Decorating",
+    "url": "{{ '/' | absolute_url }}",
+    "telephone": "+44 1709 252862",
+    "image": "{{ site.og_image | absolute_url }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "82 Central Avenue",
+      "addressLocality": "Worksop",
+      "postalCode": "S80 1EN",
+      "addressCountry": "GB"
+    },
+    "areaServed": [
+      "Worksop",
+      "Chesterfield",
+      "Nottingham",
+      "Rotherham"
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "16:30"
+      }
+    ]
+  }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="{{ '/css/site.css' | relative_url }}" rel="stylesheet">
+</head>
+<body>
+  {% include site-header.html %}
+
+  <main>
+    {{ content }}
+  </main>
+
+  {% include site-footer.html %}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Infinite marquee-style auto-scroll for testimonials, pause on hover
+      var scroller = document.querySelector('.testimonial-scroller');
+      var track = scroller && scroller.querySelector('.testimonial-track');
+      if (!scroller || !track) return;
+
+      // Duplicate cards so the marquee can loop seamlessly
+      var cards = Array.from(track.children);
+      cards.forEach(function (card) {
+        track.appendChild(card.cloneNode(true));
+      });
+
+      var isHovered = false;
+      var x = 0;
+      var speed = 40; // pixels per second
+      var halfWidth = track.scrollWidth / 2;
+      var lastTime = null;
+
+      function recalcWidth() {
+        halfWidth = track.scrollWidth / 2;
+      }
+
+      window.addEventListener('resize', function () {
+        recalcWidth();
+      });
+
+      scroller.addEventListener('mouseenter', function () {
+        isHovered = true;
+      });
+      scroller.addEventListener('mouseleave', function () {
+        isHovered = false;
+      });
+
+      function step(timestamp) {
+        if (lastTime == null) {
+          lastTime = timestamp;
+        }
+        var dt = (timestamp - lastTime) / 1000; // seconds
+        lastTime = timestamp;
+
+        if (!isHovered && track.scrollWidth > scroller.clientWidth) {
+          x -= speed * dt;
+          if (-x >= halfWidth) {
+            x += halfWidth;
+          }
+          track.style.transform = 'translateX(' + x + 'px)';
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      recalcWidth();
+      requestAnimationFrame(step);
+
+      // Gallery lightbox behaviour
+      var galleryButtons = Array.from(document.querySelectorAll('.gallery-item'));
+      var lightboxModalEl = document.getElementById('galleryLightbox');
+      var lightboxImage = document.getElementById('lightboxImage');
+      var lightboxCaption = document.getElementById('lightboxCaption');
+      var prevControl = document.querySelector('.lightbox-control.prev');
+      var nextControl = document.querySelector('.lightbox-control.next');
+      var currentIndex = 0;
+
+      if (galleryButtons.length && lightboxModalEl && lightboxImage && lightboxCaption && prevControl && nextControl) {
+        var galleryData = galleryButtons.map(function (btn) {
+          return {
+            src: btn.getAttribute('data-src'),
+            alt: btn.getAttribute('data-alt') || '',
+            caption: btn.getAttribute('data-caption') || ''
+          };
+        });
+
+        function showImage(index) {
+          var count = galleryData.length;
+          if (!count) return;
+          if (index < 0) {
+            index = count - 1;
+          } else if (index >= count) {
+            index = 0;
+          }
+          currentIndex = index;
+          var item = galleryData[index];
+          lightboxImage.src = item.src;
+          lightboxImage.alt = item.alt;
+          lightboxCaption.textContent = item.caption;
+        }
+
+        galleryButtons.forEach(function (btn, idx) {
+          btn.addEventListener('click', function () {
+            showImage(idx);
+            var modalInstance = bootstrap.Modal.getOrCreateInstance(lightboxModalEl);
+            modalInstance.show();
+          });
+        });
+
+        prevControl.addEventListener('click', function () {
+          showImage(currentIndex - 1);
+        });
+
+        nextControl.addEventListener('click', function () {
+          showImage(currentIndex + 1);
+        });
+
+        // Optional: keyboard arrow navigation when modal is open
+        lightboxModalEl.addEventListener('shown.bs.modal', function () {
+          function handleKey(e) {
+            if (e.key === 'ArrowLeft') {
+              showImage(currentIndex - 1);
+            } else if (e.key === 'ArrowRight') {
+              showImage(currentIndex + 1);
+            }
+          }
+          document.addEventListener('keydown', handleKey);
+
+          lightboxModalEl.addEventListener('hidden.bs.modal', function cleanup() {
+            document.removeEventListener('keydown', handleKey);
+            lightboxModalEl.removeEventListener('hidden.bs.modal', cleanup);
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

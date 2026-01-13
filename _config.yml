@@ -1,0 +1,18 @@
+title: "N J Broxholme"
+description: "Painting & decorating contractors serving Worksop and surrounding areas."
+url: "https://lukep1.github.io"
+baseurl: "/njdecorating"
+og_image: "/images/about-work-van.jpg"
+
+# Exclude development/build artifacts from the Jekyll build
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+
+# These directories follow Jekyll's defaults (no need to configure):
+# layouts: _layouts
+# includes: _includes

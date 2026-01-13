@@ -1,0 +1,17 @@
+{
+  "name": "saveweb2zip-com-www-njbroxholme-co-uk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "jekyll:serve": "bundle exec jekyll serve --livereload",
+    "jekyll:build": "bundle exec jekyll build",
+    "images:webp": "node scripts/optimise-images.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
+}
