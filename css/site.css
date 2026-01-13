@@ -184,49 +184,49 @@ header {
 .hero-home {
   background-image:
     linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(31, 41, 55, 0.85)),
-    url("/images/decorators-in-worksop-splash.webp");
+    url("../images/decorators-in-worksop-splash.webp");
 }
 
 .hero-domestic {
   background-image:
     linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(31, 41, 55, 0.85)),
-    url("/images/domestic-interior-living-room.webp");
+    url("../images/domestic-interior-living-room.webp");
 }
 
 .hero-commercial {
   background-image:
     linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(31, 41, 55, 0.85)),
-    url("/images/commercial-industrial-decorating.webp");
+    url("../images/commercial-industrial-decorating.webp");
 }
 
 .hero-industrial {
   background-image:
     linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(31, 41, 55, 0.85)),
-    url("/images/industrial-painting.webp");
+    url("../images/industrial-painting.webp");
 }
 
 .hero-spraying {
   background-image:
     linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(31, 41, 55, 0.85)),
-    url("/images/pvc-kitchen-spraying.webp");
+    url("../images/pvc-kitchen-spraying.webp");
 }
 
 .hero-contact {
   background-image:
     linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(31, 41, 55, 0.85)),
-    url("/images/about-work-van.webp");
+    url("../images/about-work-van.webp");
 }
 
 .hero-areas {
   background-image:
     linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(31, 41, 55, 0.85)),
-    url("/images/areas-we-cover.webp");
+    url("../images/areas-we-cover.webp");
 }
 
 .hero-faqs {
   background-image:
     linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(31, 41, 55, 0.85)),
-    url("/images/about-work-van.webp");
+    url("../images/about-work-van.webp");
 }
 
 .hero h1 {
@@ -813,7 +813,7 @@ main > section > .container {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/images/cta-work-completed.webp");
+  background-image: url("../images/cta-work-completed.webp");
   background-size: cover;
   background-position: center;
   opacity: 0.22; /* subtle detail over neutral background */
