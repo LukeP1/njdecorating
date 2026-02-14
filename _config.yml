@@ -1,7 +1,7 @@
 title: "N J Broxholme"
 description: "Painting & decorating contractors serving Worksop and surrounding areas."
-url: "https://lukep1.github.io"
-baseurl: "/njdecorating"
+url: "https://www.njbroxholme.co.uk"
+baseurl: "/"
 og_image: "/images/about-work-van.jpg"
 
 # Exclude development/build artifacts from the Jekyll build
