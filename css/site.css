@@ -46,6 +46,7 @@ a:hover {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -500,6 +501,9 @@ main > section > .container {
 }
 
 .about-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
   border-radius: var(--radius);
   box-shadow: 0 8px 22px rgba(15, 23, 42, 0.18);
 }
