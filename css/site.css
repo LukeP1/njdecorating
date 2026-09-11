@@ -424,6 +424,26 @@ main > section > .container {
   text-align: left;
 }
 
+.section-heading-compact {
+  margin-bottom: 16px;
+}
+
+.section-heading-tight {
+  margin-bottom: 12px;
+}
+
+.section-heading-medium {
+  margin-bottom: 24px;
+}
+
+.section-alt {
+  background-color: var(--bg-alt);
+}
+
+.content-note {
+  margin-top: 8px;
+}
+
 .section-heading.section-heading-left h2::after {
   margin-left: 0;
   margin-right: 0;
@@ -847,6 +867,23 @@ main > section > .container {
   margin-top: 8px;
 }
 
+.cta-label {
+  margin: 0;
+}
+
+.cta-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.cta-phone .cta-link {
+  text-decoration: none;
+}
+
+.cta-secondary {
+  margin: 4px 0 0;
+}
+
 /* Footer */
 body > footer {
   background: #111827;
@@ -905,6 +942,21 @@ body > footer .container {
 .footer-bottom a {
   color: #cbd5f5;
   font-size: 0.86rem;
+}
+
+.footer-copyright {
+  margin-top: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 .legal-links {
