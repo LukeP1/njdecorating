@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container">
       <a class="navbar-brand fw-bold text-dark brand" href="{{ '/' | relative_url }}">
-        <img src="{{ '/images/logo-nj-broxholme.webp' | relative_url }}" alt="N J Broxholme Painting &amp; Decorating" class="brand-logo" width="274" height="70" decoding="async" />
+        <img src="{{ '/images/logo-nj-broxholme.webp' | relative_url }}?{{ site.github.build_revision | default: site.asset_version }}" alt="N J Broxholme Painting &amp; Decorating" class="brand-logo" width="274" height="70" decoding="async" />
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
